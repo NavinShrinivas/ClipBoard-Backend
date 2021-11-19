@@ -8,14 +8,14 @@ const typeDefs = gql`
     description: String!
     status: Boolean!
     createdAt: String!
-    deadLine: String!
+    date: String!
   }
   input TodoInput {
     title: String!
     description: String!
     status: Boolean!
     createdAt: String!
-    deadLine: String!
+    date: String!
     #dates in both graphql and mongo get messy , so les handle string this is a hack
   }
   type User {
@@ -34,6 +34,13 @@ const typeDefs = gql`
       passwordhash: String!
       todos: [TodoInput!]
     ): User!
+    addTodo(
+      user_id: ID!
+      title: String!
+      description: String!
+      status: Boolean!
+      date: String!
+    ): Todo!
   }
 `;
 

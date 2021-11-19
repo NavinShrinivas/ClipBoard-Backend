@@ -23,7 +23,7 @@ const TodoSchema = new mongoose.Schema({
   description: String,
   status: Boolean,
   createdAt: String,
-  deadLine: String,
+  date: String,
 });
 const UserSchema = new mongoose.Schema({
   username: String,
@@ -33,4 +33,5 @@ const UserSchema = new mongoose.Schema({
 
 module.exports = {
   User: mongoose.model("User", UserSchema),
+  Todo: mongoose.model("Todo", TodoSchema),
 };
