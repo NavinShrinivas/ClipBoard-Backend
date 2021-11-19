@@ -3,12 +3,12 @@ const { gql } = require("apollo-server-express");
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
   type Todo {
-    id: ID!
     title: String!
     description: String!
     status: Boolean!
     createdAt: String!
     date: String!
+    id: ID!
   }
   input TodoInput {
     title: String!
@@ -26,6 +26,7 @@ const typeDefs = gql`
   }
   type Query {
     hello: String!
+    getTodos(username: String!, searchdate: String!): [Todo]
   }
 
   type Mutation {

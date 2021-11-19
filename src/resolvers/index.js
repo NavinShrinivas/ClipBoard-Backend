@@ -3,6 +3,22 @@ const { Todo } = require("./../models/user.js");
 const resolvers = {
   Query: {
     hello: () => "Hello world!",
+
+    getTodos: async (parent, { username, searchdate }) => {
+      const worklist = await User.find({
+        username: username,
+      });
+      let needed_list = [];
+      worklist.map((work) => {
+        console.log(work.todos);
+        work.todos.map((list) => {
+          console.log(list);
+          list._id = list._id.toString();
+          if (list.date === searchdate) needed_list.push(list);
+        });
+      });
+      return needed_list;
+    },
   },
 
   Mutation: {
