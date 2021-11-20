@@ -27,7 +27,7 @@ const resolvers = {
       c1._id = c1._id.toString();
       return c1;
     },
-    addTodo: async (parent, { user_id, title, description, status, date }) => {
+    addTodo: async (parent, { username, title, description, status, date }) => {
       //dates is auto genrated :
       var today = new Date();
       var dd = today.getDate();
@@ -49,7 +49,7 @@ const resolvers = {
       });
       console.log(newtodo);
       const record1 = await User.findOneAndUpdate(
-        { _id: user_id },
+        { username: username },
         {
           $push: { todos: newtodo },
           //todos: [...(todos + newtodo)],

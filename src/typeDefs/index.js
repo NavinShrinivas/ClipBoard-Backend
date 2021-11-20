@@ -33,10 +33,10 @@ const typeDefs = gql`
     createUser(
       username: String!
       passwordhash: String!
-      todos: [TodoInput!]
+      todos: [TodoInput]
     ): User!
     addTodo(
-      user_id: ID!
+      username: String!
       title: String!
       description: String!
       status: Boolean!
