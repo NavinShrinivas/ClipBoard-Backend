@@ -1,6 +1,6 @@
 # Backend
 
-This is the backend for BunSamsoa. It's powered by GraphQL, MongoDB and Express.
+This is the backend for ClipBoard. It's powered by GraphQL, MongoDB and Express.
 
 ## Getting the Backend Running
 1. Clone the repository
