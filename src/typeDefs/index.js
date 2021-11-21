@@ -41,7 +41,7 @@ const typeDefs = gql`
       description: String!
       status: Boolean!
       date: String
-    ): [Todo]
+    ): Todo!
   }
 `;
 

@@ -57,7 +57,7 @@ const resolvers = {
       );
       console.log(record1);
       record1._id = record1._id.toString();
-      return record1.todos;
+      return newtodo;
     },
   },
 };
