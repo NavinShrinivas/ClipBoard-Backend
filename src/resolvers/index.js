@@ -22,12 +22,12 @@ const resolvers = {
   },
 
   Mutation: {
-    createUser: async (parent, args) => {
+    CreateUser: async (parent, args) => {
       const c1 = await new User(args).save();
       c1._id = c1._id.toString();
       return c1;
     },
-    addTodo: async (parent, { username, title, description, status, date }) => {
+    AddTodo: async (parent, { username, title, description, status, date }) => {
       //dates is auto genrated :
       var today = new Date();
       var dd = today.getDate();
@@ -41,9 +41,9 @@ const resolvers = {
       }
       var today = dd + mm + yyyy;
       let newtodo = await new Todo({
-        title,
-        description,
-        status,
+        title: title,
+        description: description,
+        status: status,
         createdAt: today,
         date,
       });
@@ -57,7 +57,7 @@ const resolvers = {
       );
       console.log(record1);
       record1._id = record1._id.toString();
-      return record1;
+      return record1.todos;
     },
   },
 };

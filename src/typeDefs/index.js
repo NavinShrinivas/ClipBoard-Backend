@@ -7,7 +7,7 @@ const typeDefs = gql`
     description: String!
     status: Boolean!
     createdAt: String!
-    date: String!
+    date: String
     id: ID!
   }
   input TodoInput {
@@ -15,7 +15,7 @@ const typeDefs = gql`
     description: String!
     status: Boolean!
     createdAt: String!
-    date: String!
+    date: String
     #dates in both graphql and mongo get messy , so les handle string this is a hack
   }
   type User {
@@ -30,18 +30,18 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser(
+    CreateUser(
       username: String!
       passwordhash: String!
       todos: [TodoInput]
     ): User!
-    addTodo(
+    AddTodo(
       username: String!
       title: String!
       description: String!
       status: Boolean!
-      date: String!
-    ): Todo!
+      date: String
+    ): [Todo]
   }
 `;
 
