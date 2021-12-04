@@ -59,6 +59,18 @@ const resolvers = {
       record1._id = record1._id.toString();
       return newtodo;
     },
+    DeleteTodo: async (parent, { username, id }) => {
+      const record1 = await User.findOneAndUpdate(
+        { username: username },
+        {
+          $pull: { todos: { _id: id } },
+        }
+      );
+      record1._id = record1._id.toString();
+      let record2 = await User.findOne({ username: username }).todo;
+      console.log("delete request");
+      return record2;
+    },
   },
 };
 

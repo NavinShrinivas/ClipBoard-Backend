@@ -42,6 +42,7 @@ const typeDefs = gql`
       status: Boolean!
       date: String
     ): Todo!
+    DeleteTodo(username: String, id: ID!): [Todo]
   }
 `;
 
