@@ -27,7 +27,7 @@ const TodoSchema = new mongoose.Schema({
 });
 const UserSchema = new mongoose.Schema({
   username: String,
-  passwordhash: String,
+  authID: String,
   todos: [TodoSchema],
 });
 

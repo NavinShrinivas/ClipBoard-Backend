@@ -23,9 +23,15 @@ const resolvers = {
 
   Mutation: {
     CreateUser: async (parent, args) => {
-      const c1 = await new User(args).save();
-      c1._id = c1._id.toString();
-      return c1;
+      const t1 = await User.findOne({ authID: args.authID });
+      if (t1) {
+        console.log("user exists");
+        return null;
+      } else {
+        const c1 = await new User(args).save();
+        c1._id = c1._id.toString();
+        return c1;
+      }
     },
     AddTodo: async (parent, { username, title, description, status, date }) => {
       //dates is auto genrated :

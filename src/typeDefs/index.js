@@ -21,7 +21,7 @@ const typeDefs = gql`
   type User {
     id: ID!
     username: String!
-    passwordhash: String!
+    authID: String!
     todos: [Todo]
   }
   type Query {
@@ -30,11 +30,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    CreateUser(
-      username: String!
-      passwordhash: String!
-      todos: [TodoInput]
-    ): User!
+    CreateUser(username: String!, authID: String!, todos: [TodoInput]): User
     AddTodo(
       username: String!
       title: String!
