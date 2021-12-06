@@ -23,10 +23,12 @@ const typeDefs = gql`
     username: String!
     authID: String!
     todos: [Todo]
+    trello: String!
   }
   type Query {
     hello: String!
     getTodos(username: String!, searchdate: String!): [Todo]
+    getTrello(authID: String!): String!
   }
 
   type Mutation {

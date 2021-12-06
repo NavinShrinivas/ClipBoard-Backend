@@ -29,6 +29,7 @@ const UserSchema = new mongoose.Schema({
   username: String,
   authID: String,
   todos: [TodoSchema],
+  trello: String,
 });
 
 module.exports = {
