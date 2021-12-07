@@ -35,15 +35,80 @@ const resolvers = {
       });
       return needed_list;
     },
+    getTrello: async (parent, { authID }) => {
+      console.log(authID);
+      const worklist = await User.find({
+        authID: authID,
+      });
+      console.log(worklist[0].trello);
+      return worklist[0].trello;
+    },
   },
 
   Mutation: {
     CreateUser: async (parent, args) => {
+      const emptytrello = {
+        lanes: [
+          {
+            id: "PLANNED",
+            title: "Planned Tasks",
+            label: "20/70",
+            cards: [],
+          },
+          {
+            id: "WIP",
+            title: "Work In Progress",
+            label: "10/20",
+            cards: [],
+          },
+          {
+            id: "BLOCKED",
+            title: "Blocked",
+            label: "0/0",
+            cards: [],
+          },
+          {
+            id: "COMPLETED",
+            title: "Completed",
+            label: "2/5",
+            cards: [],
+          },
+          {
+            id: "REPEAT",
+            title: "Repeat",
+            label: "1/1",
+            cards: [],
+          },
+          {
+            id: "ARCHIVED",
+            title: "Archived",
+            label: "1/1",
+            cards: [],
+          },
+          {
+            id: "ARCHIVED2",
+            title: "Archived2",
+            label: "1/1",
+            cards: [],
+          },
+          {
+            id: "ARCHIVED3",
+            title: "Archived3",
+            label: "1/1",
+            cards: [],
+          },
+        ],
+      };
+
       const t1 = await User.findOne({ authID: args.authID });
       if (t1) {
         console.log("user exists");
         return null;
       } else {
+        const c1 = await new User(args);
+        c1.trello = JSON.stringify(emptytrello);
+        c1.save();
+        console.log(c1.trello);
         const c1 = await new User(args).save();
         const c2 = await new Files(args).save();
         c1._id = c1._id.toString();

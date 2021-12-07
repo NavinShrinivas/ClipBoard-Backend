@@ -24,6 +24,7 @@ const typeDefs = gql`
     username: String!
     authID: String!
     todos: [Todo]
+    trello: String!
   }
 
   type file {
@@ -51,6 +52,7 @@ const typeDefs = gql`
     hello: String!
     getFiles(authID: String!): [file]
     getTodos(username: String!, searchdate: String!): [Todo]
+    getTrello(authID: String!): String!
   }
 
   type Mutation {
