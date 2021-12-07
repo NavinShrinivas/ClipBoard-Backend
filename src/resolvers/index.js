@@ -109,7 +109,6 @@ const resolvers = {
         c1.trello = JSON.stringify(emptytrello);
         c1.save();
         console.log(c1.trello);
-        const c1 = await new User(args).save();
         const c2 = await new Files(args).save();
         c1._id = c1._id.toString();
         return c1;
@@ -117,7 +116,7 @@ const resolvers = {
     },
 
     AddFile: async (parent, args) => {
-      console.log(args)
+      console.log(args);
       const record1 = await Files.findOneAndUpdate(
         { authID: args.authID },
         {
@@ -125,7 +124,8 @@ const resolvers = {
         }
       );
       record1._id = record1._id.toString();
-      console.log(record1)
+      record1.save();
+      console.log(record1);
       return args;
     },
 
